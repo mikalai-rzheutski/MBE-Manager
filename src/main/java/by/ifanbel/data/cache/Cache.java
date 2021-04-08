@@ -110,6 +110,7 @@ public class Cache {
 	 */
 	public static byte[] getBytes(Heterostructure h, String fileType, boolean drawConditions) throws IOException {
 		File file = getFile(h, fileType, drawConditions);
+		System.out.println("FILE LENGTH IN getBytes: " + file.length());
 		InputStream in = new FileInputStream(file);
 		byte[] byteArray = IOUtils.readFully(in, -1, true);
 		in.close();
