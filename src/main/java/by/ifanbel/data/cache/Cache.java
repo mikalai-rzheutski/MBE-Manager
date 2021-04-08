@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -61,7 +62,9 @@ public class Cache {
 		if (!file.getParentFile().exists())
 			file.getParentFile().mkdirs();
 		System.out.println("FILE FULL PATH: " + file.getAbsolutePath());
-		System.out.println("FILES IN FOLDER: " + file.getParentFile().list());
+		System.out.println("FILES IN FOLDER: ");
+		Arrays.stream(file.getParentFile()
+				.list()).forEach(System.out::println);
 		if (!file.exists())
 			try {
 				boolean created = file.createNewFile();
