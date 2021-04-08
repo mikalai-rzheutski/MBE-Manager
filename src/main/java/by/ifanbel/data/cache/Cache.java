@@ -53,7 +53,7 @@ public class Cache {
 		if (!folder.exists()) folder.mkdirs();
 		File file = new File(resourcefolder
 				.concat("/")
-				.concat("samplesFolder/")
+				.concat("tmp/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
 				.concat(".")
