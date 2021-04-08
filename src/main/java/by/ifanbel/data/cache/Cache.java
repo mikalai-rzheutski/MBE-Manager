@@ -62,13 +62,14 @@ public class Cache {
 		if (!file.getParentFile().exists())
 			file.getParentFile().mkdirs();
 		System.out.println("FILE FULL PATH: " + file.getAbsolutePath());
-		System.out.println("FILES IN FOLDER: ");
-		Arrays.stream(file.getParentFile()
-				.list()).forEach(System.out::println);
+
 		if (!file.exists())
 			try {
 				boolean created = file.createNewFile();
 				System.out.println("FILE " + file.getAbsolutePath() + " CREATED: " + created);
+				System.out.println("FILES IN FOLDER: ");
+				Arrays.stream(file.getParentFile()
+						.list()).forEach(System.out::println);
 				new Design(h, false, true, drawConditions).toFile(file);
 			} catch (IOException e) {
 				e.printStackTrace();
