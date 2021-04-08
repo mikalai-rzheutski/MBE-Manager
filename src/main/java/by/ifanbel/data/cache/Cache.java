@@ -61,6 +61,7 @@ public class Cache {
 		if (!file.getParentFile().exists())
 			file.getParentFile().mkdirs();
 		System.out.println("FILE FULL PATH: " + file.getAbsolutePath());
+		System.out.println("FILES IN FOLDER: " + file.getParentFile().list());
 		if (!file.exists())
 			try {
 				boolean created = file.createNewFile();
