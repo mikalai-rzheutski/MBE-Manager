@@ -75,7 +75,9 @@ public class ViewHeterostructureController {
 		} catch (NoSuchHeterostructureException e) {
 			e.printStackTrace();
 		}
-		return Cache.getBytes(h, type, drawConditions(sampleName));
+		byte[] result = Cache.getBytes(h, type, drawConditions(sampleName));
+		System.out.println("IMAGE SIZE IN CONTROLLER: " + result.length);
+		return result;
 	}
 
 	@GetMapping("openPrevious")
