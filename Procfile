@@ -1,1 +1,0 @@
-﻿web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/MbeManager-2.0.war
