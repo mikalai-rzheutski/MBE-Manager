@@ -52,7 +52,7 @@ public class Cache {
 		String drawConditionsChar = drawConditions? "" : "-";
 		if (!folder.exists()) folder.mkdirs();
 		File file = new File(resourcefolder
-				.concat("/")
+				.concat("/build")
 				.concat("tmp/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
@@ -60,7 +60,8 @@ public class Cache {
 				.concat(fileType));
 		if (!file.exists())
 			try {
-				file.createNewFile();
+				boolean created = file.createNewFile();
+				System.out.println("FILE " + file.getAbsolutePath() + " CREATED: " + created);
 				new Design(h, false, true, drawConditions).toFile(file);
 			} catch (IOException e) {
 				e.printStackTrace();
