@@ -52,12 +52,14 @@ public class Cache {
 		String drawConditionsChar = drawConditions? "" : "-";
 		if (!folder.exists()) folder.mkdirs();
 		File file = new File(resourcefolder
-				.concat("/build")
+				.concat("/build/")
 				.concat("tmp/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
 				.concat(".")
 				.concat(fileType));
+		if (!file.getParentFile().exists())
+			file.getParentFile().mkdirs();
 		System.out.println("FILE FULL PATH: " + file.getAbsolutePath());
 		if (!file.exists())
 			try {
