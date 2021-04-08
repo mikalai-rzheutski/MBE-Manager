@@ -48,9 +48,11 @@ public class Cache {
 	 */
 	public static File getFile(Heterostructure h, String fileType, boolean drawConditions) {
 		File folder = new File(resourcefolder);
+		System.out.println("FOLDER: " + resourcefolder);
 		String drawConditionsChar = drawConditions? "" : "-";
 		if (!folder.exists()) folder.mkdirs();
-		File file = new File(resourcefolder.concat("/")
+		File file = new File(resourcefolder
+				.concat("/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
 				.concat(".")
