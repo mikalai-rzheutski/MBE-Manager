@@ -58,6 +58,7 @@ public class Cache {
 				.concat(drawConditionsChar)
 				.concat(".")
 				.concat(fileType));
+		System.out.println("FILE FULL PATH: " + file.getAbsolutePath());
 		if (!file.exists())
 			try {
 				boolean created = file.createNewFile();
