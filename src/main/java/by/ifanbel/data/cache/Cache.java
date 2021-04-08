@@ -71,6 +71,7 @@ public class Cache {
 				Arrays.stream(file.getParentFile()
 						.list()).forEach(System.out::println);
 				new Design(h, false, true, drawConditions).toFile(file);
+				System.out.println("FILE LENGTH: " + file.length());
 			} catch (IOException e) {
 				e.printStackTrace();
 				return null;
