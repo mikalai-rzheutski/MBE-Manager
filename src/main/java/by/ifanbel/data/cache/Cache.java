@@ -114,6 +114,7 @@ public class Cache {
 		InputStream in = new FileInputStream(file);
 		byte[] byteArray = IOUtils.readFully(in, -1, true);
 		in.close();
+		System.out.println("BYTEARRAY LENGTH IN getBytes: " + byteArray.length);
 		if (!fileType.contains(Design.SVG)) return byteArray;
 		else return new String(byteArray).getBytes("UTF-8");
 	}
