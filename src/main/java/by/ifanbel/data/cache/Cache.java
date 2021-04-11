@@ -25,7 +25,8 @@ public class Cache {
 	private static List<Object[]> tableOfHeterostructures;
 
 	public static void setResourcefolder(String resourcefolder) {
-		Cache.resourcefolder = resourcefolder;
+		Cache.resourcefolder = resourcefolder
+				.concat("/graphs/");
 	}
 
 	/**
@@ -55,7 +56,7 @@ public class Cache {
 		File file = new File(resourcefolder
 			//	.concat("/build/")
 			//	.concat("tmp/")
-				.concat("/")
+			//	.concat("/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
 				.concat(".")
