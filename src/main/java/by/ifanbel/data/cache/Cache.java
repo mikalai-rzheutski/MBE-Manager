@@ -49,31 +49,22 @@ public class Cache {
 	 * @return a File object.
 	 */
 	public static File getFile(Heterostructure h, String fileType, boolean drawConditions) {
-		File folder = new File(resourcefolder);
+	//	File folder = new File(resourcefolder);
 		System.out.println("FOLDER: " + resourcefolder);
 		String drawConditionsChar = drawConditions? "" : "-";
-		if (!folder.exists()) folder.mkdirs();
+		//if (!folder.exists()) folder.mkdirs();
 		File file = new File(resourcefolder
-			//	.concat("/build/")
-			//	.concat("tmp/")
-			//	.concat("/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
 				.concat(".")
 				.concat(fileType));
 		if (!file.getParentFile().exists())
 			file.getParentFile().mkdirs();
-		System.out.println("FILE FULL PATH: " + file.getAbsolutePath());
-
 		if (!file.exists())
 			try {
-				boolean created = file.createNewFile();
-				System.out.println("FILE " + file.getAbsolutePath() + " CREATED: " + created);
-				System.out.println("FILES IN FOLDER: ");
-				Arrays.stream(file.getParentFile()
-						.list()).forEach(System.out::println);
+				file.createNewFile();
+		//		Arrays.stream(file.getParentFile().list()).forEach(System.out::println);
 				new Design(h, false, true, drawConditions).toFile(file);
-				System.out.println("FILE LENGTH: " + file.length());
 			} catch (IOException e) {
 				e.printStackTrace();
 				return null;
@@ -112,13 +103,11 @@ public class Cache {
 	 */
 	public static byte[] getBytes(Heterostructure h, String fileType, boolean drawConditions) throws IOException {
 		File file = getFile(h, fileType, drawConditions);
-		System.out.println("FILE LENGTH IN getBytes: " + file.length());
 		InputStream in = new FileInputStream(file);
 		//byte[] byteArray = IOUtils.readFully(in);
 		byte[] byteArray = new byte[(int)file.length()];
 		IOUtils.readFully(in, byteArray);
 		in.close();
-		System.out.println("BYTEARRAY LENGTH IN getBytes: " + byteArray.length);
 		if (!fileType.contains(Design.SVG)) return byteArray;
 		else return new String(byteArray).getBytes("UTF-8");
 	}

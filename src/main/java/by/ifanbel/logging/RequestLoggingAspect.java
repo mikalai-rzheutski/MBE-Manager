@@ -46,7 +46,8 @@ public class RequestLoggingAspect {
 					String username = ((UserDetails) principal).getUsername();
 					String userRole = ((UserDetails) principal).getAuthorities()
 							.toString();
-					requestEventService.saveRequestEvent(new RequestEvent(username, userRole, url));
+					// the persistence is disabled because of the limited size of the Heroku database
+				//	requestEventService.saveRequestEvent(new RequestEvent(username, userRole, url));
 				}
 			}
 		}
