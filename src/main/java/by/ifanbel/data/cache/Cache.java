@@ -53,8 +53,9 @@ public class Cache {
 		String drawConditionsChar = drawConditions? "" : "-";
 		if (!folder.exists()) folder.mkdirs();
 		File file = new File(resourcefolder
-				.concat("/build/")
-				.concat("tmp/")
+			//	.concat("/build/")
+			//	.concat("tmp/")
+				.concat("/")
 				.concat(h.getSampleNumber())
 				.concat(drawConditionsChar)
 				.concat(".")
