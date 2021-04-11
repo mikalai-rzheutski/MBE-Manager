@@ -4,7 +4,7 @@ import by.ifanbel.data.database.dto.JspBeanHeterostructure;
 import by.ifanbel.data.database.entities.Heterostructure;
 import by.ifanbel.data.database.services.HeterostructureService;
 import by.ifanbel.graphic.Design;
-import sun.misc.IOUtils;
+import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -112,7 +112,9 @@ public class Cache {
 		File file = getFile(h, fileType, drawConditions);
 		System.out.println("FILE LENGTH IN getBytes: " + file.length());
 		InputStream in = new FileInputStream(file);
-		byte[] byteArray = IOUtils.readFully(in, -1, true);
+		//byte[] byteArray = IOUtils.readFully(in);
+		byte[] byteArray = new byte[(int)file.length()];
+		IOUtils.readFully(in, byteArray);
 		in.close();
 		System.out.println("BYTEARRAY LENGTH IN getBytes: " + byteArray.length);
 		if (!fileType.contains(Design.SVG)) return byteArray;
