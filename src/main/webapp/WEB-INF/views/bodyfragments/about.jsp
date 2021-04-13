@@ -9,24 +9,24 @@
 <header class="section-header">
     <p><spring:message code="about.title"/></p>
 </header>
-<br> <br>
-<p class=aboutText align="justify">
-    The <b>MBE Manager</b> is used as a tool for documentation of production process of multilayers semiconductor heterostructures using the <i>Molecular Beam Epitaxy (MBE)</i> technology (see the picture below). The system provides logging, storage and retrieving of all technological process details as well as automatic generation of drawings and reports.
+<br>
+<p class="aboutText" style="color: #111166">
+    <b>Tech. stack: </b> <i>Spring Boot, Spring MVC, Spring JPA, Spring Security + OAuth 2.0, JSP, Docker, etc.</i>
+</p>
+<p class="aboutText" style="color: #111166">
+    The <b>source code</b> for the project can be found over on <a href="https://github.com/mikalai-rzheutski/MBE-Manager-docker">GitHub</a>
 </p>
 <br>
-<p class=aboutText align="justify">
-    In turn, the semiconductor heterostructures nowadays are widely used as basic elements of the most nanoelectronic devices: ultra-high frequency amplifiers for mobile and space communications, lasers, light-emitting diodes, etc.
+<p class="aboutText" align="justify">
+    The <b>MBE Manager</b> is used as a tool for documentation of production process of multi-layer GaN-based heterostructures using the <i>Molecular Beam Epitaxy (MBE)</i> technology. The system provides logging, storage and retrieving of all technological process details as well as automatic generation of drawings and reports.
 </p>
 <div class=mbe-setup>
     <p><img src="<c:url value="/resources/img/mbe-setup.jpg"/>" height="300"></p>
-    <figcaption>MBE setup located in a research lab.</figcaption>
+    <figcaption>MBE setup located in a research Lab</figcaption>
 </div>
-<p class=aboutText>
-    The <b>source code</b> for the project can be found over on <a href="https://github.com/mikalai-rzheutski/MBE-Manager">GitHub</a>
-</p>
-<br>
-<p class=aboutText>
-    <b>Tech. stack: </b> <i>Spring Boot, Spring MVC, Spring JPA, Spring Security + OAuth 2.0, JSP, Docker, etc.</i>
-</p>
+<div class=mbe-setup>
+    <p><img src="<c:url value="/resources/img/GaN-applications.jpg"/>" width="600"></p>
+</div>
+
 </body>
 </html>
