@@ -104,7 +104,7 @@ public class MSWordDocument {
 		XWPFRun r01 = p01.createRun();
 		r01.setBold(true);
 		r01.setFontSize(13);
-		r01.setText("Описание");
+		r01.setText("Description");
 		//insert image
 		double imageCellHeight = (tableRowTwo.getHeight() + tableRowThree.getHeight() + tableRowFour.getHeight())/20;
 		double imageCellWidth = 400;
@@ -140,7 +140,7 @@ public class MSWordDocument {
 		XWPFRun r21 = p21.createRun();
 		r21.setFontSize(13);
 		r21.setBold(true);
-		r21.setText("Выполнил: ");
+		r21.setText("Originated by: ");
 		XWPFRun r21a = p21.createRun();
 		r21a.setFontSize(13);
 		r21a.setText(heterostructure.getGrowersLastNames());
@@ -152,7 +152,7 @@ public class MSWordDocument {
 		XWPFRun r31 = p31.createRun();
 		r31.setBold(true);
 		r31.setFontSize(13);
-		r31.setText("Дата: ");
+		r31.setText("Date: ");
 		XWPFRun r31a = p31.createRun();
 		r31a.setFontSize(13);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
