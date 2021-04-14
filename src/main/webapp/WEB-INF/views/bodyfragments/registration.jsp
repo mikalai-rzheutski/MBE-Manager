@@ -55,7 +55,9 @@
                             <option value="role_banned">banned</option>
                         </select>
                         <br>
+                        <br>
                         <input class="main-button1" type="submit" name="create" value="<spring:message code="registration.create"/>">
+                        <br>
                         <br>
                     </div>
                     <%--<input class="main-button1" id="closeFilter" type="submit" name="search" value="x">--%>

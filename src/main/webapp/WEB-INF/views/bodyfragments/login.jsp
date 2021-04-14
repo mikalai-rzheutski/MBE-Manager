@@ -17,10 +17,10 @@
     <form class="password-form" action="${loginUrl}" method="post">
         <spring:message code="login.login"/>
         <input class="name" type="text" class="form-control" name="j_username" placeholder="Login" required
-               autofocus value="">
+               autofocus value="superadmin">
         <spring:message code="login.pw"/>
         <input class="user-password" type="password" class="form-control" name="j_password" placeholder="Password"
-               required value="">
+               required value="1">
         <div>
             <spring:message code="login.remember"/>
             <input type="checkbox" name="remember-me">
