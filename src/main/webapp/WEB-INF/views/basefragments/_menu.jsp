@@ -8,6 +8,7 @@
                 <spring:message code="menu.heterostructures.button"/>
             </button>
         </div>
+        <%--
         <div>
             <button class="main-button" formaction="<c:url value = "/noSuchPage"/>">
                 <spring:message code="menu.setup.button"/>
@@ -23,6 +24,7 @@
                 <spring:message code="menu.precursors.button"/>
             </button>
         </div>
+        --%>
         <div>
             <button class="main-button" formaction="<c:url value = "/settings"/>">
                 <spring:message code="menu.settings.button"/>
