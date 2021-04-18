@@ -5,7 +5,7 @@
 <%@ page isELIgnored="false" %>
 <header class="main-header">
     <div class="mbe-header">
-        <h2>MBE Manager (demo)</h2>
+        <h1>MBE Manager (demo)</h1>
         <div>
             <select id="locales">
                 <option value="ru"
