@@ -147,7 +147,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				.permitAll()
 				.antMatchers("/browseHeterostructure/*", "/viewHeterostructure/*", "/noSuchPage")
 				.hasAnyRole("USER", "ADMIN", "SUPERADMIN")
-				.antMatchers("/editHeterostructure/*", "/settings")
+				.antMatchers("/editHeterostructure/*", "/settings", "/settings/*")
 				.hasAnyRole("ADMIN", "SUPERADMIN")
 				.antMatchers("/settings/registration/*")
 				.hasRole("SUPERADMIN")
