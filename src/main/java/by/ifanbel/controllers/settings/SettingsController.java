@@ -45,7 +45,7 @@ public class SettingsController {
 		return model;
 	}
 
-	@RequestMapping("/registration/registerNewUser")
+	@RequestMapping("/registration/newUser")
 	public ModelAndView registerNewUser(@RequestParam String userLogin, @RequestParam String password, @RequestParam String email, @RequestParam String userRole) {
 		User newUser = new User(userLogin, password, email, userRole, true);
 		userService.createOrUpdate(newUser);
@@ -55,7 +55,7 @@ public class SettingsController {
 		return model;
 	}
 
-	@RequestMapping("/exportDump")
+	@RequestMapping("/data/export")
 	public void exportDump(HttpServletResponse response) throws IOException {
 		Long currentTime = System.currentTimeMillis();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd HH_mm_ss");
@@ -68,7 +68,7 @@ public class SettingsController {
 		outStream.flush();
 	}
 
-	@RequestMapping(value="/importDump/", method = RequestMethod.POST)
+	@RequestMapping(value="/data/import/", method = RequestMethod.POST)
 	public String importDump(@RequestParam MultipartFile file, RedirectAttributes redirectAttributes) {
 		ObjectMapper mapper = new ObjectMapper();
 		String fileName = file.getOriginalFilename();

@@ -14,9 +14,16 @@
         <put-attribute name="footer" value="/WEB-INF/views/basefragments/_footer.jsp"/>
     </definition>
 
+    <!-- Inner Define -->
+    <definition name="inner.definition"
+                template="/WEB-INF/views/layouts/innercontent.jsp">
+        <!--<put-attribute name="content" value="/WEB-INF/views/bodyfragments/browse_heterostructure.jsp"/>-->
+    </definition>
+
     <!-- Browse Heterostructures Page -->
     <definition name="browseHeterostructure" extends="base.definition">
         <put-attribute name="title" value="title.heterostructures"/>
+        <put-attribute name="pageTitle" value="title.heterostructures"/>
         <put-attribute name="body" value="/WEB-INF/views/bodyfragments/browse_heterostructure.jsp"/>
     </definition>
 
@@ -56,7 +63,7 @@
         <put-attribute name="body" value="/WEB-INF/views/bodyfragments/registration.jsp"/>
     </definition>
 
-    <!-- Registration Page -->
+    <!-- About Page -->
     <definition name="about" extends="base.definition">
         <put-attribute name="title" value="title.about"/>
         <put-attribute name="body" value="/WEB-INF/views/bodyfragments/about.jsp"/>

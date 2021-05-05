@@ -8,10 +8,10 @@
 <body>
 <header class="section-header">
 </header>
-<p style="color:red; font-weight:bold; font-size: larger" align="center">${message}</p>
+<p class="text-danger p-5" align="center">${message}</p>
 <br> <br> <br>
 <p align="center">
-    <button class="main-button1" onclick="goBack()"><spring:message code="exception.goBack"/></button>
+    <button class="btn btn-secondary" onclick="goBack()"><spring:message code="exception.goBack"/></button>
 </p>
 <script>
     function goBack() {

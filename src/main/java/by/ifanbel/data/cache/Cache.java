@@ -64,7 +64,7 @@ public class Cache {
 			try {
 				file.createNewFile();
 		//		Arrays.stream(file.getParentFile().list()).forEach(System.out::println);
-				new Design(h, false, true, drawConditions).toFile(file);
+				new Design(h, true, true, drawConditions).toFile(file);
 			} catch (IOException e) {
 				e.printStackTrace();
 				return null;

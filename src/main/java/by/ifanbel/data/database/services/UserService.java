@@ -43,4 +43,14 @@ public class UserService {
 	public List<Object[]> getListOfUsers() {
 		return userRepo.getListOfUsers();
 	}
+
+	@Transactional
+	public String getUserPreferredLocale(String login) {
+		return userRepo.getUserPreferredLocale(login);
+	}
+
+	@Transactional
+	public void setUserPreferredLocale(String login, String locale) {
+		userRepo.setUserPreferredLocale(login, locale);
+	}
 }

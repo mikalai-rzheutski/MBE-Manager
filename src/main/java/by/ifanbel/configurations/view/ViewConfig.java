@@ -1,5 +1,6 @@
 package by.ifanbel.configurations.view;
 
+import by.ifanbel.configurations.security.ApplicationLocaleResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -54,9 +55,10 @@ public class ViewConfig implements WebMvcConfigurer {
 
 	@Bean
 	public LocaleResolver localeResolver() {
-		SessionLocaleResolver slr = new SessionLocaleResolver();
+		/*SessionLocaleResolver slr = new SessionLocaleResolver();
 		slr.setDefaultLocale(Locale.ENGLISH);
-		return slr;
+		return slr;*/
+		return new ApplicationLocaleResolver();
 	}
 
 	@Bean

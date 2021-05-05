@@ -34,6 +34,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.ForwardAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.util.Assert;
 import org.springframework.web.context.request.RequestContextListener;
@@ -53,13 +54,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
 	@Autowired
 	@Qualifier("oauth2ClientContext")
-	private OAuth2ClientContext oAuth2ClientContext;
+	OAuth2ClientContext oAuth2ClientContext;
 
 	@Autowired
-	private UserRepo userRepo;
+	UserRepo userRepo;
 
 	@Autowired
 	ObjectFactory<HttpSession> httpSessionFactory;
+
+	@Autowired
+	LoginSuccessHandler loginSuccessHandler;
+
+	@Autowired
+	LogoutSuccessHandler logoutSuccessHandler;
 
 	@Bean
 	@ConfigurationProperties("security.oauth2.client.google")
@@ -131,7 +138,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 		githubFilter.setTokenServices(githubTokenServices);
 		githubFilter.setAuthenticationFailureHandler(authenticationFailureHandler);
 		filters.add(githubFilter);
-
 		filter.setFilters(filters);
 		return filter;
 	}
@@ -147,9 +153,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				.permitAll()
 				.antMatchers("/browseHeterostructure/*", "/viewHeterostructure/*", "/noSuchPage")
 				.hasAnyRole("USER", "ADMIN", "SUPERADMIN")
-				.antMatchers("/editHeterostructure/*", "/settings", "/settings/*")
+				.antMatchers("/editHeterostructure/*", "/settings", "/settings/", "/settings/data/**")
 				.hasAnyRole("ADMIN", "SUPERADMIN")
-				.antMatchers("/settings/registration/*")
+				.antMatchers("/settings/registration/**")
 				.hasRole("SUPERADMIN")
 				.and()
 				.exceptionHandling()
@@ -164,12 +170,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				.failureUrl("/login?error=true")
 				.usernameParameter("j_username")
 				.passwordParameter("j_password")
-				.permitAll();
+				.permitAll()
+				.successHandler(loginSuccessHandler);
 		http.logout()
 				.permitAll()
 				.logoutUrl("/logout")
 				.logoutSuccessUrl("/login?logout")
 				.invalidateHttpSession(true)
+				.logoutSuccessHandler(logoutSuccessHandler)
 				.and()
 				.rememberMe()
 				.key("kljijnghDFRDcfc423fddx")
@@ -178,7 +186,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				.rememberMeCookieName("javasampleapproach-remember-me")
 				.tokenValiditySeconds(24 * 60 * 60)
 			;
-		http.sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry());
+	//	http.sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry());
 	}
 
 	@Override

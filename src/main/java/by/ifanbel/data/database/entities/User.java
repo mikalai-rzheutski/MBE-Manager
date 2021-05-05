@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Locale;
 
 //@Component
 @Configurable(preConstruction = true, autowire = Autowire.BY_NAME, dependencyCheck = true)
@@ -19,7 +20,7 @@ public class User {
 
 	@Autowired
 	@Transient
-	PasswordEncoder passwordEncoder22;
+	PasswordEncoder passwordEncoder;
 
 	@Id
 	@Column(name = "login", nullable = false)
@@ -29,12 +30,15 @@ public class User {
 
 	private String email;
 
+	private String preferredLocale;
+
 
 	public User(String login, String password, String email, String role, boolean encodePassword) {
 		this.login = login;
-		if (encodePassword) this.password = passwordEncoder22.encode(password);
+		if (encodePassword) this.password = passwordEncoder.encode(password);
 		else this.password = password;
 		this.email = email;
+		this.preferredLocale = Locale.ENGLISH.toLanguageTag();
 		this.role = UserRole.getUserRole(role);
 	}
 
@@ -58,6 +62,8 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+
+	public String getPreferredLocale() {return preferredLocale; }
 
 	public enum UserRole {
 		ROLE_SUPERADMIN,

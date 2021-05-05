@@ -4,70 +4,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page isELIgnored="false" %>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="<c:url value="/resources/css/design-edit-styles.css"/>">
-</head>
-<body>
-<header class="section-header">
-    <p><spring:message code="browse.title"/></p>
-</header>
-<section style="overflow: hidden;">
-    <div style="width: 1000%;">
-        <div class="main-frame">
-            <div class="main-buttons">
-                <div id="search-form">
-                    <input class="name" type="text" name="sampleName" placeholder="<spring:message code="browse.search"/>"
-                           autocomplete="off">
-                    <input class="main-button1" id="closeFilter" type="submit" name="search" value="x">
-                </div>
-                <div id="new-heterostructure">
-                    <form action="createNewHeterostructure">
-                        <input class="main-button1" type="submit" name="create" value="<spring:message code="browse.create"/>">
-                    </form>
-                </div>
-                <div class="end-div"></div>
-            </div>
 
-            <table class="tableHead" border="0" align="center">
-                <tbody>
-                <tr align="center">
-                    <th style="width:10em"><spring:message code="browse.data"/></th>
-                    <th style="width:10em"><spring:message code="browse.heterostructure"/></th>
-                    <th style="width:30em"><spring:message code="browse.description"/></th>
-                </tr>
-                </tbody>
-            </table>
-
-            <div class="main-window-table">
-                <form>
-                    <table id="tableOfHeterostructures" border="0" align="center">
-                        <tbody>
-
-                        <c:forEach items="${listOfAllHeterostructures}" var="heterostructure">
-                            <tr>
-                                <td align="center" style="width:10em"><input readonly type="date"
-                                                                             value="${heterostructure[0]}"/></td>
-                                <td align="center" style="width:10em">${heterostructure[1]}</td>
-                                <td align="center" style="width:30em">${heterostructure[2]}</td>
-                                <td id="buttonsCells" align="center">
-                                    <div style="display: block; margin: 0 auto; /*width: 8em;*/">
-                                        <button type="submit" id="openButton"
-                                                formaction="viewHeterostructure/${heterostructure[1]}.svg"><spring:message code="browse.open"/>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-        </div>
+<div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+    <div class="d-inline-flex col-sm-5 col-lg-3">
+        <input id="search" type="text" class="name form-control ml-5 " style="width: 12em" autocomplete="off" placeholder="<spring:message code="browse.search"/>" >
+        <button  class="btn btn-outline-dark ml-2" onclick="clearSearch()">X</button>
     </div>
-</section>
-</body>
-<script src="<c:url value="/resources/js/scrollListOfHeterostructures.js"/>"></script>
-</html>
+    <form class="form-inline m-0 " style="height: 2em; float: right;">
+        <button class="btn btn-outline-info m-0" formaction="createNewHeterostructure"><spring:message code="browse.create"/></button>
+    </form>
+</div>
+
+<div class="tableFixHead mt-2 bg-white flex-grow-1">
+    <table class="table table-hover" id="tableOfHeterostructures">
+        <thead class="thead-dark">
+        <tr align="center">
+            <th style="width:8em"><spring:message code="browse.data"/></th>
+            <th style="width:8em"><spring:message code="browse.heterostructure"/></th>
+            <th style="width:40em"><spring:message code="browse.description"/></th>
+            <th style="width:8em"></th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+            <form>
+                <c:forEach items="${listOfAllHeterostructures}" var="heterostructure">
+                    <tr align="center">
+                        <td>${heterostructure[0]}</td>
+                        <td>${heterostructure[1]}</td>
+                        <td>${heterostructure[2]}</td>
+                        <td><button class="btn btn-outline-primary btn-sm" formaction="viewHeterostructure/${heterostructure[1]}.svg">
+                        <spring:message code="browse.open"/></button></td>
+                    </tr>
+                </c:forEach>
+            </form>
+        </tbody>
+    </table>
+</div>
+
+<script src="<c:url value="/resources/js/heterostructureTable.js"/>"></script>
 
